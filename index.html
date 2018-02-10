@@ -144,7 +144,7 @@
 		$formSuccess.toggleClass('d-none', true);
 		$formErrors.toggleClass('d-none', true);
 
-		$.post("http://server.v-home.co.uk/clubbed-svc-enquiry-handler/v1/enquiries/club-enquiry/emails/" + email, $enquiryForm.serialize())
+		$.post("http://www.caterhamladiesjoggers.co.uk/enquiries/v1/club-enquiry/emails/" + email, $enquiryForm.serialize())
 			.done(function (response) {
 				console.log(response);
 				setSuccessState(email);
