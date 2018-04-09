@@ -4,7 +4,9 @@ import $ from 'jquery';
 // Tell Babel to transform JSX into h() calls:
 /** @jsx h */
 
-import {SCHEDULES_API_URL} from '../site-constants';
+import {SITE_API_URL} from '../site-constants';
+
+let SCHEDULES_API_URL = SITE_API_URL + '/schedules/search/activeSchedules';
 
 export default class Schedules extends Component {
 
@@ -14,7 +16,7 @@ export default class Schedules extends Component {
 	}
 
 	componentDidMount() {
-		$.get(SCHEDULES_API_URL + '/search/activeSchedules', (data) => this.setState(data._embedded));
+		$.get(SCHEDULES_API_URL, (data) => this.setState(data._embedded));
 	}
 
 	render(props, state) {
@@ -37,6 +39,7 @@ export default class Schedules extends Component {
 							<thead>
 							<tr>
 								<th scope="col">When</th>
+								<th scope="col">Duration</th>
 								<th scope="col">Group</th>
 								<th scope="col">Where</th>
 							</tr>
@@ -48,6 +51,7 @@ export default class Schedules extends Component {
 									return (
 										<tr key={schedule.name}>
 											<th scope="row">{new Date(schedule.commences + 'T' + schedule.time).toLocaleDateString('en-GB', {weekday: 'long', hour: '2-digit', minute: '2-digit'})}</th>
+											<td>{schedule.duration}</td>
 											<td>{schedule.name}</td>
 											<td>{schedule.location}</td>
 										</tr>

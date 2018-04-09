@@ -4,8 +4,7 @@ const INDEX_META_DESCRIPTION = 'Home of Ladies Run Club in Caterham, Surrey';
 
 const FACEBOOK_URL = '/caterhamladiesjoggers';
 const SITE_EMAIL_ADDRESS = 'admin@caterhamladiesjoggers.co.uk';
-const ENQUIRIES_API_URL = 'http://www.caterhamladiesjoggers.co.uk/enquiries/v2/club-enquiry/emails/';
-const SCHEDULES_API_URL = 'http://www.caterhamladiesjoggers.co.uk/enquiries/schedules/';
+const SITE_API_URL = 'http://www.caterhamladiesjoggers.co.uk/enquiries';
 
 module.exports = {
 	INDEX_TITLE,
@@ -13,6 +12,5 @@ module.exports = {
 
 	FACEBOOK_URL,
 	SITE_EMAIL_ADDRESS,
-	ENQUIRIES_API_URL,
-	SCHEDULES_API_URL
+	SITE_API_URL,
 };
