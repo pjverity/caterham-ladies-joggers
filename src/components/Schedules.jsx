@@ -1,19 +1,13 @@
-import { h, render, Component } from 'preact';
+import {h, render, Component} from 'preact';
 import $ from 'jquery';
 
-// Tell Babel to transform JSX into h() calls:
-/** @jsx h */
+import Schedule from './Schedule.jsx';
 
 import {SITE_API_URL} from '../site-constants';
 
 let SCHEDULES_API_URL = SITE_API_URL + '/schedules/search/activeSchedules';
 
 export default class Schedules extends Component {
-
-	constructor(props) {
-		super(props);
-		this.state = {schedules: []};
-	}
 
 	componentDidMount() {
 		$.get(SCHEDULES_API_URL, (data) => this.setState(data._embedded));
@@ -45,18 +39,18 @@ export default class Schedules extends Component {
 							</tr>
 							</thead>
 							<tbody>
-							{
-								state.schedules.map(schedule =>
-								{
-									return (
-										<tr key={schedule.name}>
-											<th scope="row">{new Date(schedule.commences + 'T' + schedule.time).toLocaleDateString('en-GB', {weekday: 'long', hour: '2-digit', minute: '2-digit'})}</th>
-											<td>{schedule.duration}</td>
-											<td>{schedule.name}</td>
-											<td>{schedule.location}</td>
-										</tr>
-									)
-								})
+							{this.state.schedules === undefined &&
+								<tr>
+									<td className='text-center' colSpan={4}>Getting latest schedules... <i className='fas fa-fw fa-circle-notch fa-spin'/></td>
+								</tr>
+							}
+							{this.state.schedules !== undefined && this.state.schedules.length === 0 &&
+								<tr>
+									<td className='text-center' colSpan={4}>No schedules. Please check back later...</td>
+								</tr>
+							}
+							{this.state.schedules !== undefined && this.state.schedules.length > 0 &&
+								this.state.schedules.map(schedule => <Schedule schedule={schedule}/>)
 							}
 							</tbody>
 						</table>
@@ -66,6 +60,5 @@ export default class Schedules extends Component {
 		);
 	}
 }
-
 
 

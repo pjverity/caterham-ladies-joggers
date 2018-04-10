@@ -1,8 +1,5 @@
 import { h, render, Component } from 'preact';
 
-// Tell Babel to transform JSX into h() calls:
-/** @jsx h */
-
 import Router from 'preact-router';
 import Match from 'preact-router/match';
 

@@ -1,8 +1,5 @@
 import { h, render, Component } from 'preact';
 
-// Tell Babel to transform JSX into h() calls:
-/** @jsx h */
-
 import Schedules from "./Schedules.jsx";
 import Registration from "./Registration.jsx";
 
