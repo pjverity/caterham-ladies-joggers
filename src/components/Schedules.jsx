@@ -10,7 +10,8 @@ let SCHEDULES_API_URL = SITE_API_URL + '/schedules/search/activeSchedules';
 export default class Schedules extends Component {
 
 	componentDidMount() {
-		$.get(SCHEDULES_API_URL, (data) => this.setState(data._embedded));
+		$.get(SCHEDULES_API_URL, (data) => this.setState({getSchedulesFailed: false, schedules: data._embedded.schedules}))
+			.fail((jqxhr, textStatus, error) => this.setState({getSchedulesFailed: true}));
 	}
 
 	render(props, state) {
@@ -39,7 +40,12 @@ export default class Schedules extends Component {
 							</tr>
 							</thead>
 							<tbody>
-							{this.state.schedules === undefined &&
+							{this.state.getSchedulesFailed &&
+								<tr>
+									<td className='text-center' colSpan={4}><i className="fas fa-exclamation-triangle text-danger"/> Failed to get schedules. Please check back later...</td>
+								</tr>
+							}
+							{!this.state.getSchedulesFailed && this.state.schedules === undefined &&
 								<tr>
 									<td className='text-center' colSpan={4}>Getting latest schedules... <i className='fas fa-fw fa-circle-notch fa-spin'/></td>
 								</tr>
