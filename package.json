@@ -1,7 +1,7 @@
 {
   "name": "caterham-ladies-joggers",
   "version": "1.0.0",
-  "description": "Dorking Ladies Joggers Website",
+  "description": "Caterham Ladies Joggers Website",
   "private": true,
   "dependencies": {
     "jquery": "^3.3.1",

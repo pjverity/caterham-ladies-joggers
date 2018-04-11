@@ -13,7 +13,7 @@ export default class Header extends Component {
 							<i class="fa fa-envelope align-middle text-primary"/> <a href={'mailto:' + props.emailAddress}>{props.emailAddress}</a>
 						</div>
 						<div class={props.facebookUrl !== undefined ? 'col-auto' : 'd-none'}>
-							<i class="fab fa-facebook align-middle text-primary"/> <a href={'https://www.facebook.com' + props.facebookUrl}> {'facebook.com' + props.facebookUrl}</a>
+							<i class="fa fa-facebook-official align-middle text-primary"/> <a href={'https://www.facebook.com' + props.facebookUrl}> {'facebook.com' + props.facebookUrl}</a>
 						</div>
 					</div>
 

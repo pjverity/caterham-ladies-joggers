@@ -42,17 +42,17 @@ export default class Schedules extends Component {
 							<tbody>
 							{this.state.getSchedulesFailed &&
 								<tr>
-									<td className='text-center' colSpan={4}><i className="fas fa-exclamation-triangle text-danger"/> Failed to get schedules. Please check back later...</td>
+									<td class='text-center' colSpan={4}><i class="fa fa-exclamation-triangle text-danger"/> Failed to get schedules. Please check back later...</td>
 								</tr>
 							}
 							{!this.state.getSchedulesFailed && this.state.schedules === undefined &&
 								<tr>
-									<td className='text-center' colSpan={4}>Getting latest schedules... <i className='fas fa-fw fa-circle-notch fa-spin'/></td>
+									<td class='text-center' colSpan={4}>Getting latest schedules... <i class='fa fa-fw fa-circle-o-notch fa-spin'></i></td>
 								</tr>
 							}
 							{this.state.schedules !== undefined && this.state.schedules.length === 0 &&
 								<tr>
-									<td className='text-center' colSpan={4}>No schedules. Please check back later...</td>
+									<td class='text-center' colSpan={4}>No schedules. Please check back later...</td>
 								</tr>
 							}
 							{this.state.schedules !== undefined && this.state.schedules.length > 0 &&

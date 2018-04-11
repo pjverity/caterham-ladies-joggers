@@ -61,7 +61,7 @@ export default class Registration extends Component
 							<div class="col">
 								<div class="input-group">
 									<div class="input-group-prepend">
-										<span class="input-group-text"><i class="fas fa-fw fa-phone"/></span>
+										<span class="input-group-text"><i class="fa fa-fw fa-phone"/></span>
 									</div>
 									<input type="tel" class="form-control" name="phone" autoComplete="home phone" placeholder="Phone number (optional)"/>
 								</div>
@@ -73,11 +73,11 @@ export default class Registration extends Component
 							<div class="col">
 								<div class="input-group">
 									<div class="input-group-prepend">
-										<span class="input-group-text"><i class="fas fa-fw fa-envelope"/></span>
+										<span class="input-group-text"><i class="fa fa-fw fa-envelope"/></span>
 									</div>
 									<input type="email" id="email" name="email" autoComplete="home email" class="form-control" placeholder="me@home.com" required/>
 										<div class="input-group-append">
-											<button type="submit" onClick={this.onClick} class="btn btn-info"><i class="fas fa-fw fa-paper-plane" style={{'WebkitFilter': 'blur(0)'}}/></button>
+											<button type="submit" onClick={this.onClick} class="btn btn-info"><i class="fa fa-fw fa-send" style={{'WebkitFilter': 'blur(0)'}}/></button>
 										</div>
 								</div>
 							</div>
@@ -92,7 +92,7 @@ export default class Registration extends Component
 
 							<div id="form-success" class="card border-0 text-center d-none" role="alert">
 								<div class="card-body">
-									<h4><i class="text-success align-middle fas fa-fw fa-2x fa-check-circle"/> Thanks for Registering!</h4>
+									<h4><i class="text-success align-middle fa fa-fw fa-2x fa-check-circle"/> Thanks for Registering!</h4>
 									<small class="text-muted">Confirmation has been sent to: <span id="confirm-email" class="text-info"/><br/>
 										(Please note the information regarding Junk/Spam)
 									</small>
@@ -145,7 +145,7 @@ export default class Registration extends Component
 	startProgress()
 	{
 		this.state.$submitButton.toggleClass('disabled', true).prop('disabled', true);
-		this.state.$submitButton.find('i').removeClass('fa-paper-plane').addClass('fa-circle-notch fa-spin');
+		this.state.$submitButton.find('i').removeClass('fa-send').addClass('fa-circle-o-notch fa-spin');
 
 		$('input').toggleClass('is-invalid', false);
 	}
@@ -154,7 +154,7 @@ export default class Registration extends Component
 	{
 		this.state.$submitButton.toggleClass('disabled', false).prop('disabled', false);
 
-		this.state.$submitButton.find('i').addClass('fa-paper-plane').removeClass('fa-circle-notch fa-spin');
+		this.state.$submitButton.find('i').addClass('fa-send').removeClass('fa-circle-o-notch fa-spin');
 	}
 
 	setSuccessState(email)
