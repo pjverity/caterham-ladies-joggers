@@ -17,7 +17,7 @@ export default class EditableSchedule extends Component {
 	}
 
 	componentWillReceiveProps(nextProps, nextState) {
-		if ( !_.isEmpty(this.state.changes) && _.isMatch(nextProps.schedule, this.state.changes) ) {
+		if ( !_.isEqual(this.props.schedule, nextProps.schedule) ) {
 			this.endSaveInProgress();
 			this.resetChanges();
 		}
@@ -162,8 +162,11 @@ export default class EditableSchedule extends Component {
 	}
 
 	handleClickSave(e) {
-		this.props.onScheduleUpdated({...this.state.changes}, this.props.index);
-		this.beginSaveInProgress();
+		if ( !_.isEmpty(this.state.changes)) {
+			this.props.onScheduleUpdated({...this.state.changes}, this.props.index);
+			this.beginSaveInProgress();
+		}
+
 		this.exitEditMode();
 	}
 
