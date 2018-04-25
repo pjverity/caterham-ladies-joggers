@@ -12,8 +12,7 @@ module.exports = {
 			{test: /\.js$/, exclude: /node_modules/, loader: "babel-loader"},
 			{test: /\.css$/, use: ['style-loader', 'css-loader']},
 			{
-				test: /\.(scss)$/,
-				use: [{
+				test: /\.(scss)$/, use: [{
 					loader: 'style-loader', // inject CSS to page
 				}, {
 					loader: 'css-loader', // translates CSS into CommonJS modules

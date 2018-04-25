@@ -1,7 +1,7 @@
-import { h, render, Component } from 'preact';
-
-// Tell Babel to transform JSX into h() calls:
-/** @jsx h */
+import { h, render, Component } from 'preact'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap'
+import 'popper.js'
 
 import App from './components/App.jsx';
 
