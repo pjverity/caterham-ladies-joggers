@@ -15,7 +15,7 @@ export default class Main extends Component {
 		this.state = {schedules: null, xhrFailed: null}
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		this.requestActiveSchedules();
 	}
 

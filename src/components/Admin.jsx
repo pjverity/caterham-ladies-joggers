@@ -22,7 +22,7 @@ export default class Admin extends Component {
 		}
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		this.requestSchedules();
 	}
 
