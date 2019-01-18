@@ -4,7 +4,7 @@ steps:
   - name: 'gcr.io/cloud-builders/npm'
     args: ['run-script', 'build']
   - name: 'gcr.io/cloud-builders/gsutil'
-    args: ['cp', 'gs://artifacts.${PROJECT_ID}.appspot.com/site-assets/caterham-ladies-joggers/images', '/dist']
+    args: ['cp', '-r', 'gs://artifacts.${PROJECT_ID}.appspot.com/site-assets/caterham-ladies-joggers/images', '/dist']
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/${PROJECT_ID}/caterham-ladies-joggers-site:latest', '.']
   - name: 'gcr.io/cloud-builders/docker'
