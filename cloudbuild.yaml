@@ -1,6 +1,6 @@
 steps:
   - name: 'gcr.io/cloud-builders/npm'
-    args: ['run-script build']
+    args: ['run-script', 'build']
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/${PROJECT_ID}/caterham-ladies-joggers', '.']
   - name: 'gcr.io/cloud-builders/docker'
