@@ -4,7 +4,7 @@ steps:
   - name: 'gcr.io/cloud-builders/npm'
     args: ['run-script', 'build']
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/${PROJECT_ID}/caterham-ladies-joggers', '.']
+    args: ['build', '-t', 'gcr.io/${PROJECT_ID}/caterham-ladies-joggers-site', '.']
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/${PROJECT_ID}/caterham-ladies-joggers']
-images: ['gcr.io/${PROJECT_ID}/caterham-ladies-joggers']
+    args: ['push', 'gcr.io/${PROJECT_ID}/caterham-ladies-joggers-site']
+images: ['gcr.io/${PROJECT_ID}/caterham-ladies-joggers-site']
