@@ -34,9 +34,7 @@ export default class Registration extends Component
 
 
 				<div class="col-md-6 col-sm-12">
-					<h4 class="text-center text-md-right">Get your first run for <span class="text-success font-italic">FREE!</span></h4>
-
-					<p class="text-center text-md-right">Simply register your details and follow the instructions in the email to claim your free token</p>
+					<h4 class="text-center text-md-right">Simply register your details here to get more information</h4>
 					<p class="font-weight-light text-center text-md-right border-left border-right pl-2 pr-2 border-warning" style={{'fontSize': '.75em'}}>If you haven't got a mail in your <strong>Inbox</strong> in the next minute or two, it's probably sitting
 						in your Junk/Spam folder. Open it and click <strong> Not Junk</strong> to avoid missing out!</p>
 				</div>
