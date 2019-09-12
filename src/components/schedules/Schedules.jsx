@@ -40,10 +40,10 @@ export default class Schedules extends Component {
 								</tr>
 							}
 							{this.props.schedules !== null && this.props.schedules.length > 0 && !this.props.isEditable &&
-								this.props.schedules.map(schedule => <Schedule key={schedule._links.self.href} schedule={schedule}/>)
+								this.props.schedules.map(schedule => <Schedule key={schedule.id} schedule={schedule}/>)
 							}
 							{this.props.schedules !== null && this.props.schedules.length > 0 && this.props.isEditable &&
-								this.props.schedules.map((schedule, index) => <EditableSchedule key={schedule._links.self.href} index={index}
+								this.props.schedules.map((schedule, index) => <EditableSchedule key={schedule.id} index={index}
 								                                                                schedule={schedule}
 								                                                                onScheduleUpdated={(scheduleChanges, scheduleIdx) => this.props.onScheduleUpdated(scheduleChanges, scheduleIdx)}
 								                                                                onScheduleDeleted={(scheduleIdx) => this.props.onScheduleDeleted(scheduleIdx)}/>)

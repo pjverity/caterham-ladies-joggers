@@ -5,10 +5,9 @@ import Schedules from './schedules/Schedules.jsx'
 import NewScheduleBar from './schedules/NewScheduleBar.jsx'
 import ScheduleDeletionModal from './schedules/ScheduleDeletionModal.jsx'
 
-import {SITE_API_URL} from '../site-constants';
 import {getJSON, postJSON, patchJSON, deleteJSON} from '../ajaxutils'
 
-const SCHEDULES_API_URL = SITE_API_URL + '/schedules';
+const SCHEDULES_API_URL = '/schedules';
 
 export default class Admin extends Component {
 
@@ -60,7 +59,7 @@ export default class Admin extends Component {
 	}
 
 	handleModalConfirmed(e) {
-		const url = this.state.schedules[this.state.selectedScheduleIdx]._links.self.href;
+		const url = SCHEDULES_API_URL + '/' + this.state.schedules[this.state.selectedScheduleIdx].id;
 
 		deleteJSON(url)
 			.done(() => this.removeSchedule(this.state.selectedScheduleIdx))
@@ -75,7 +74,7 @@ export default class Admin extends Component {
 	}
 
 	handleScheduleUpdated(scheduleChanges, scheduleIdx) {
-		const url = this.state.schedules[scheduleIdx]._links.self.href;
+		const url = SCHEDULES_API_URL + '/' + this.state.schedules[scheduleIdx].id;
 
 		patchJSON(url, scheduleChanges)
 			.done((data) => this.updateSchedule(data, scheduleIdx))
@@ -101,7 +100,7 @@ export default class Admin extends Component {
 		this.setError(null);
 
 		getJSON(SCHEDULES_API_URL)
-			.done((data) => this.setSchedules(data._embedded.schedules))
+			.done((data) => this.setSchedules(data))
 			.fail((jqxhr, textStatus, error) => this.handleXHRFailure(jqxhr, textStatus, error));
 	}
 

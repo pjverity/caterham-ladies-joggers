@@ -3,10 +3,9 @@ import { h, render, Component } from 'preact'
 import Schedules from './schedules/Schedules.jsx'
 import Registration from './Registration.jsx'
 
-import {SITE_API_URL} from '../site-constants'
 import {getJSON} from '../ajaxutils'
 
-const ACTIVE_SCHEDULES_API_URL = SITE_API_URL + '/schedules/search/activeSchedules';
+const ACTIVE_SCHEDULES_API_URL = '/schedules';
 
 export default class Main extends Component {
 
@@ -53,7 +52,7 @@ export default class Main extends Component {
 		this.setError(null);
 
 		getJSON(ACTIVE_SCHEDULES_API_URL)
-			.done((data) => this.setSchedules(data._embedded.schedules))
+			.done((data) => this.setSchedules(data))
 			.fail((jqxhr, textStatus, error) => this.handleXHRFailure(jqxhr, textStatus, error));
 	}
 	
