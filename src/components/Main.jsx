@@ -5,7 +5,7 @@ import Registration from './Registration.jsx'
 
 import {getJSON} from '../ajaxutils'
 
-const ACTIVE_SCHEDULES_API_URL = '/schedules';
+const ACTIVE_SCHEDULES_API_URL = '/schedules?activeOnly';
 
 export default class Main extends Component {
 
