@@ -1,9 +1,7 @@
 import { h, render, Component } from 'preact'
 import $ from "jquery"
 
-import {SITE_API_URL} from "../site-constants"
-
-let REGISTRATION_URL = SITE_API_URL + '/v2/club-enquiry/emails/';
+let REGISTRATION_URL = '/registration/register/';
 
 export default class Registration extends Component
 {
@@ -124,16 +122,18 @@ export default class Registration extends Component
 				this.setSuccessState(email);
 			})
 			.fail((jqxhr, textStatus, error) => {
-				if (jqxhr.responseJSON === undefined) {
-					console.error(textStatus);
-					console.error(error);
+				if (jqxhr.status === 500) {
+					console.error(jqxhr.responseJSON);
 
-					const list = this.state.$formErrors.find('ul');
-					list.append('<li>Oops! Due to a technical issue we were unable to process your request at this time. Please try again later or contact us using the details at the top of the page while we work to resolve it.</li>');
-					this.state.$formErrors.toggleClass('d-none', false);
-				}
-				else {
-					this.setErrorState(jqxhr.responseJSON);
+					if (jqxhr.responseJSON.message === undefined) {
+						this.setErrorState(jqxhr.responseJSON);
+					} else {
+						const list = this.state.$formErrors.find('ul');
+						list.append('<li>Oops! Due to a technical issue we were unable to process your request at this time. Please try again later or contact us using the details at the top of the page while we work to resolve it.</li>');
+						list.append(`<li>&nbsp;</li>`);
+						list.append(`<li class="font-weight-light text-muted">${jqxhr.responseJSON.message}</li>`);
+						this.state.$formErrors.toggleClass('d-none', false);
+					}
 				}
 			})
 			.always(() => this.stopProgress());
@@ -173,7 +173,7 @@ export default class Registration extends Component
 		const list = this.state.$formErrors.find('ul');
 
 		const items = response.map(function (element) {
-			return '<li>' + element.errorMessage + '</li>';
+			return `<li>${element.errorMessage}</li>`;
 		});
 
 		list.append(items);

@@ -9,8 +9,8 @@ module.exports = merge(common, {
 		contentBase: path.resolve(__dirname, 'dist'),
 		historyApiFallback: true,
 		proxy: {
-			'/enquiries': {
-				target: 'http://localhost:8080/',
+			'/': {
+				target: 'http://localhost:8081/clj',
 				secure: false,
 				xfwd: true,
 				autoRewrite: true,
