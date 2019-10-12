@@ -17,9 +17,6 @@ export default class Footer extends Component {
 							Ladies
 							<ul class="list-unstyled">
 								<li><a href="http://www.reigateladiesjoggers.co.uk">Reigate</a></li>
-								<li><a href="http://www.dorkingladiesjoggers.co.uk">Dorking</a></li>
-								<li><a href="http://www.horshamladiesjoggers.co.uk">Horsham</a></li>
-								<li><a href="http://www.oxtedladiesjoggers.co.uk">Oxted</a></li>
 							</ul>
 							<Link activeClassName={'visible'} href={'/privacy-policy'}>Our Privacy Policy</Link>
 						</div>
