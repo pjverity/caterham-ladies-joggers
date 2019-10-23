@@ -6,17 +6,13 @@ const common = require('./webpack.common.js');
 module.exports = merge(common, {
 	devtool: 'inline-source-map',
 	devServer: {
-		contentBase: path.resolve(__dirname, 'dist'),
+		contentBase: path.join(__dirname, 'dist'),
+		port: 9000,
 		historyApiFallback: true,
-		proxy: {
-			'/': {
-				target: 'http://localhost:8081/clj',
-				secure: false,
-				xfwd: true,
-				autoRewrite: true,
-				changeOrigin: true
-			}
-		}
+		proxy: [{
+			context: ['/schedules','/registration'],
+			target: 'http://localhost:8080/clj'
+		}]
 	},
 	plugins: [
 		new webpack.DefinePlugin({
