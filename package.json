@@ -4,12 +4,10 @@
   "description": "Caterham Ladies Joggers Website",
   "private": true,
   "dependencies": {
-    "bootstrap": "^4.3.1",
     "iso8601-duration": "^1.2.0",
     "jquery": "^3.4.1",
     "lodash": "^4.17.15",
     "moment-timezone": "^0.5.27",
-    "popper.js": "^1.16.0",
     "preact": "^10.0.1",
     "preact-router": "^3.1.0"
   },
@@ -21,6 +19,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-env": "^1.7.0",
+    "copy-webpack-plugin": "^5.0.4",
     "css-loader": "^0.28.11",
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.12.0",

@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const {INDEX_TITLE, INDEX_META_DESCRIPTION} = require('./src/site-constants');
 
 module.exports = {
@@ -37,6 +38,10 @@ module.exports = {
 			template: path.resolve(__dirname, 'src/index.html'),
 			title: INDEX_TITLE,
 			description: INDEX_META_DESCRIPTION
-		})
+		}),
+		new CopyPlugin([
+			{ from: path.resolve(__dirname, 'src/pages'),
+				to: path.resolve(__dirname, 'dist/pages') },
+		])
 	]
 };

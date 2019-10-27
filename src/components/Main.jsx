@@ -2,6 +2,7 @@ import { h, render, Component } from 'preact'
 
 import Schedules from './schedules/Schedules.jsx'
 import Registration from './Registration.jsx'
+import Coaches from './coaches/Coaches'
 
 import {getJSON} from '../ajaxutils'
 
@@ -21,8 +22,13 @@ export default class Main extends Component {
 	render(props, state) {
 		return (
 			<main>
-				<div className='container'>
-					<div className='row m-4 justify-content-center'>
+				<div className='container justify-content-center'>
+					<hr />
+					<div className={'text-center'}>
+						<h4>Meet Our Coaches</h4>
+						<Coaches />
+					</div>
+					<div className='row m-4'>
 						<div className='col'>
 							<hr className='d-none d-sm-block'/>
 						</div>
