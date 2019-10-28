@@ -44,26 +44,26 @@ export default class Coaches extends Component {
 
 	render(props, state) {
 		return (
-				<div className={'row pt-3'}>
-					<div className={'col'}>
-						<Coach coachInfo={this.state.coaches[0]}/>
-					</div>
-					<div className={'col'}>
-						<Coach coachInfo={this.state.coaches[1]}/>
-					</div>
-					<div className={'col'}>
-						<Coach coachInfo={this.state.coaches[2]}/>
-					</div>
-					<div className={'col'}>
-						<Coach coachInfo={this.state.coaches[3]}/>
-					</div>
-					<div className={'col'}>
-						<Coach coachInfo={this.state.coaches[4]}/>
-					</div>
-					<div className={'col'}>
-						<Coach coachInfo={this.state.coaches[5]}/>
-					</div>
+			<div className={'row pt-3'}>
+				<div className={'col'}>
+					<Coach coachInfo={this.state.coaches[0]}/>
 				</div>
+				<div className={'col'}>
+					<Coach coachInfo={this.state.coaches[1]}/>
+				</div>
+				<div className={'col'}>
+					<Coach coachInfo={this.state.coaches[2]}/>
+				</div>
+				<div className={'col'}>
+					<Coach coachInfo={this.state.coaches[3]}/>
+				</div>
+				<div className={'col'}>
+					<Coach coachInfo={this.state.coaches[4]}/>
+				</div>
+				<div className={'col'}>
+					<Coach coachInfo={this.state.coaches[5]}/>
+				</div>
+			</div>
 		);
 	}
 
