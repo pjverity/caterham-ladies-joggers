@@ -10,10 +10,10 @@ export default class Coach extends Component {
 	render(props, state) {
 		return (
 			<div>
-				<img src={this.props.coachInfo.image} alt={this.props.coachInfo.name} width={100} />
-				<div>
-					<a href={this.props.coachInfo.url} native>{this.props.coachInfo.name}</a>
-				</div>
+				<a href={this.props.coachInfo.url}>
+					<img src={this.props.coachInfo.image} alt={this.props.coachInfo.name} width={100} /><br/>
+					{this.props.coachInfo.name}
+				</a>
 			</div>
 		);
 	}
