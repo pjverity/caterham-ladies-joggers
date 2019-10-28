@@ -1,4 +1,4 @@
-import { h, render, Component } from 'preact'
+import {h, render, Component} from 'preact'
 
 import Coach from "./Coach";
 
@@ -16,7 +16,7 @@ export default class Coaches extends Component {
 				{
 					image: 'images/coaches/clare.png',
 					name: 'Clare',
-					url: '/pages/coaches/clare.html'
+					url: 'pages/coaches/clare.html'
 				},
 				{
 					image: 'images/coaches/keata.png',
@@ -38,7 +38,7 @@ export default class Coaches extends Component {
 					name: 'Cat',
 					url: 'pages/coaches/cat.html'
 				}
-				]
+			]
 		}
 	}
 
