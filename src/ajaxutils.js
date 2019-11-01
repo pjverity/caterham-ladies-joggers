@@ -1,4 +1,3 @@
-import $ from "jquery";
 
 function getJSON(url) {
 	return $.get(url);

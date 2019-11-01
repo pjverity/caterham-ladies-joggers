@@ -1,5 +1,4 @@
 import { h, render, Component } from 'preact'
-import $ from "jquery"
 
 let REGISTRATION_URL = '/registration/register/';
 

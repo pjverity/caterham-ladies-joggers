@@ -1,5 +1,4 @@
 import {h, render, Component} from 'preact'
-import $ from 'jquery'
 
 import Schedules from './schedules/Schedules.jsx'
 import NewScheduleBar from './schedules/NewScheduleBar.jsx'
