@@ -1,4 +1,6 @@
-import { h, render, Component } from 'preact'
+import {h, render, Component} from 'preact'
+
+import {postJSON} from '../ajaxutils'
 
 let REGISTRATION_URL = '/registration/register/';
 
@@ -71,9 +73,9 @@ export default class Registration extends Component
 										<span class="input-group-text"><i class="fa fa-fw fa-envelope"/></span>
 									</div>
 									<input type="email" id="email" name="email" autoComplete="home email" class="form-control" placeholder="me@home.com" required/>
-										<div class="input-group-append">
-											<button type="submit" onClick={this.onClick} class="btn btn-info"><i class="fa fa-fw fa-send" style={{'WebkitFilter': 'blur(0)'}}/></button>
-										</div>
+									<div class="input-group-append">
+										<button type="submit" onClick={this.onClick} class="btn btn-info"><i class="fa fa-fw fa-send" style={{'WebkitFilter': 'blur(0)'}}/></button>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -107,35 +109,38 @@ export default class Registration extends Component
 
 		this.startProgress();
 
-		const email = this.state.$enquiryForm.find("input[name='email']").val();
-
 		this.state.$enquiryForm.toggleClass('d-none', false);
 		this.state.$formSuccess.toggleClass('d-none', true);
 		this.state.$formErrors.toggleClass('d-none', true);
 		this.state.$formErrors.find('ul').empty();
 
-		$.post(REGISTRATION_URL + email, this.state.$enquiryForm.serialize())
-			.done( (response) => {
-				console.log(response);
+		const email = this.state.$enquiryForm.find("input[name='email']").val();
+		const firstName = this.state.$enquiryForm.find("input[name='firstName']").val();
+		const lastName = this.state.$enquiryForm.find("input[name='lastName']").val();
+		const phone = this.state.$enquiryForm.find("input[name='phone']").val();
 
-				this.setSuccessState(email);
-			})
-			.fail((jqxhr, textStatus, error) => {
-				if (jqxhr.status === 500) {
-					console.error(jqxhr.responseJSON);
+		postJSON(REGISTRATION_URL + email, {
+			firstName: firstName,
+			lastName: lastName,
+			phone: phone
+		}).done((response) => {
+			this.setSuccessState(email);
+		}).fail((jqxhr, textStatus, error) => {
+			console.error(jqxhr.responseJSON);
 
-					if (jqxhr.responseJSON.message === undefined) {
-						this.setErrorState(jqxhr.responseJSON);
-					} else {
-						const list = this.state.$formErrors.find('ul');
-						list.append('<li>Oops! Due to a technical issue we were unable to process your request at this time. Please try again later or contact us using the details at the top of the page while we work to resolve it.</li>');
-						list.append(`<li>&nbsp;</li>`);
-						list.append(`<li class="font-weight-light text-muted">${jqxhr.responseJSON.message}</li>`);
-						this.state.$formErrors.toggleClass('d-none', false);
-					}
+			if (jqxhr.status === 500) {
+
+				if (jqxhr.responseJSON.message === undefined) {
+					this.setErrorState(jqxhr.responseJSON);
+				} else {
+					const list = this.state.$formErrors.find('ul');
+					list.append('<li>Oops! Due to a technical issue we were unable to process your request at this time. Please try again later or contact us using the details at the top of the page while we work to resolve it.</li>');
+					list.append(`<li>&nbsp;</li>`);
+					list.append(`<li class="font-weight-light text-muted">${jqxhr.responseJSON.message}</li>`);
+					this.state.$formErrors.toggleClass('d-none', false);
 				}
-			})
-			.always(() => this.stopProgress());
+			}
+		}).always(() => this.stopProgress());
 
 	}
 
