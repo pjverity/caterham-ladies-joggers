@@ -10,20 +10,20 @@ export default class Footer extends Component {
 						<div class="col-4 col-sm-2">
 							Mens
 							<ul class="list-unstyled">
-								<li><a href="http://www.reigatemensjoggers.co.uk">Reigate</a></li>
+								<li><a href="http://www.reigatemensjoggers.co.uk" target={'_blank'}>Reigate</a></li>
 							</ul>
 						</div>
 						<div class="col-4 col-sm-2">
 							Ladies
 							<ul class="list-unstyled">
-								<li><a href="http://www.reigateladiesjoggers.co.uk">Reigate</a></li>
+								<li><a href="http://www.reigateladiesjoggers.co.uk" target={'_blank'}>Reigate</a></li>
 							</ul>
 							<Link activeClassName={'visible'} href={'/privacy-policy'}>Our Privacy Policy</Link>
 						</div>
 						<div class="col-4 col-sm-2">
 							Juniors
 							<ul class="list-unstyled">
-								<li><a href="http://www.reigatejuniorjoggers.co.uk">Reigate</a></li>
+								<li><a href="http://www.reigatejuniorjoggers.co.uk" target={'_blank'}>Reigate</a></li>
 							</ul>
 						</div>
 					</div>
