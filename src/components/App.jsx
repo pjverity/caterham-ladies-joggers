@@ -2,7 +2,7 @@ import { h, render, Component } from 'preact'
 import Router from 'preact-router'
 import Match from 'preact-router/match'
 
-import {FACEBOOK_URL, SITE_EMAIL_ADDRESS} from '../site-constants'
+import {FACEBOOK_URL, INSTAGRAM_URL, SITE_EMAIL_ADDRESS} from '../site-constants'
 
 import Header from "./Header.jsx"
 import Main from "./Main.jsx"
@@ -18,7 +18,8 @@ export default class App extends Component {
 					{ ({ matches, path, url }) => (
 						<Header showLogo={path === '/'}
 						        emailAddress={SITE_EMAIL_ADDRESS}
-						        facebookUrl={FACEBOOK_URL}/>
+						        facebookUrl={FACEBOOK_URL}
+						        instagramUrl={INSTAGRAM_URL}/>
 					) }
 				</Match>
 				<Router>

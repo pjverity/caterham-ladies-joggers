@@ -9,11 +9,14 @@ export default class Header extends Component {
 						<div class="col-auto">
 							<i class="fa fa-phone align-middle text-primary"/><span itemProp="telephone"> <a href="tel:+447555384810">07555 384 810</a></span>
 						</div>
-						<div class="col-auto">
+						<div class="col-auto text-nowrap">
 							<i class="fa fa-envelope align-middle text-primary"/> <a href={'mailto:' + props.emailAddress}>{props.emailAddress}</a>
 						</div>
-						<div class={props.facebookUrl !== undefined ? 'col-auto' : 'd-none'}>
-							<i class="fa fa-facebook-official align-middle text-primary"/> <a href={'https://www.facebook.com' + props.facebookUrl} target={'_blank'}> {'facebook.com' + props.facebookUrl}</a>
+						<div class={props.facebookUrl !== undefined ? 'col-auto text-nowrap' : 'd-none'}>
+							<i class="fab fa-facebook-square align-middle text-primary"/> <a href={'https://www.facebook.com' + props.facebookUrl} target={'_blank'}> {'facebook.com' + props.facebookUrl}</a>
+						</div>
+						<div class={props.instagramUrl !== undefined ? 'col-auto text-nowrap' : 'd-none'}>
+							<i class="fab fa-instagram align-middle text-primary"/> <a href={'https://www.instagram.com' + props.instagramUrl} target={'_blank'}> {'instagram.com' + props.instagramUrl}</a>
 						</div>
 					</div>
 
