@@ -6,7 +6,7 @@ import Coaches from './coaches/Coaches'
 
 import {getJSON} from '../ajaxutils'
 
-const ACTIVE_SCHEDULES_API_URL = '/schedules?activeOnly';
+const ACTIVE_SCHEDULES_API_URL = '/schedules';
 
 export default class Main extends Component {
 

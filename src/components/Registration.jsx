@@ -44,12 +44,12 @@ export default class Registration extends Component
 
 						<div class="row form-group">
 							<div class="col-12 col-md-6">
-								<input type="text" class="form-control" name="firstName" autoComplete="home firstName" placeholder="First name" required/>
+								<input id="register.registrationDetails.firstName" type="text" class="form-control" name="firstName" autoComplete="home firstName" placeholder="First name" required/>
 							</div>
 
 
 							<div class="col-12 mt-3 col-md-6 mt-md-0">
-								<input type="text" class="form-control" name="lastName" autoComplete="home lastName" placeholder="Last name" required/>
+								<input id="register.registrationDetails.lastName" type="text" class="form-control" name="lastName" autoComplete="home lastName" placeholder="Last name" required/>
 							</div>
 						</div>
 
@@ -72,7 +72,7 @@ export default class Registration extends Component
 									<div class="input-group-prepend">
 										<span class="input-group-text"><i class="fa fa-fw fa-envelope"/></span>
 									</div>
-									<input type="email" id="email" name="email" autoComplete="home email" class="form-control" placeholder="me@home.com" required/>
+									<input id="register.registrationDetails.email" type="email" name="email" autoComplete="home email" class="form-control" placeholder="me@home.com" required/>
 									<div class="input-group-append">
 										<button type="submit" onClick={this.onClick} class="btn btn-info"><i class="fa fa-fw fa-send" style={{'WebkitFilter': 'blur(0)'}}/></button>
 									</div>
@@ -122,13 +122,20 @@ export default class Registration extends Component
 		postJSON(REGISTRATION_URL + email, {
 			firstName: firstName,
 			lastName: lastName,
-			phone: phone
+			phone: phone,
+			email: email
 		}).done((response) => {
 			this.setSuccessState(email);
 		}).fail((jqxhr, textStatus, error) => {
-			console.error(jqxhr.responseJSON);
 
-			if (jqxhr.status === 500) {
+			if (jqxhr.status === 404) {
+				this.setErrorState({parameterViolations: [
+					{
+						message: "Please provide an email address",
+						path: "register.registrationDetails.email"
+					}]});
+			}
+			else if (jqxhr.status === 400) {
 
 				if (jqxhr.responseJSON.message === undefined) {
 					this.setErrorState(jqxhr.responseJSON);
@@ -176,14 +183,14 @@ export default class Registration extends Component
 
 		const list = this.state.$formErrors.find('ul');
 
-		const items = response.map(function (element) {
-			return `<li>${element.errorMessage}</li>`;
+		const items = response.parameterViolations.map(function (element) {
+			return `<li>${element.message}</li>`;
 		});
 
 		list.append(items);
 
-		response.forEach(function (element) {
-			const input = $("input[name='" + element.fieldName + "']");
+		response.parameterViolations.forEach(function (element) {
+			const input = $("#" + element.path.replace(/\./g, "\\."));
 			input.toggleClass('is-invalid', true);
 		})
 	}

@@ -98,7 +98,7 @@ export default class Admin extends Component {
 		this.setSchedules(null);
 		this.setError(null);
 
-		getJSON(SCHEDULES_API_URL)
+		getJSON(SCHEDULES_API_URL + '?includeInactiveSchedules=true')
 			.done((data) => this.setSchedules(data))
 			.fail((jqxhr, textStatus, error) => this.handleXHRFailure(jqxhr, textStatus, error));
 	}
